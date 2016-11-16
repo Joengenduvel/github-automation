@@ -29,6 +29,7 @@ namespace GithubAutomation.Webhooks
         {
             var config = new HttpConfiguration();
 
+            config.MapHttpAttributeRoutes();
             config.InitializeReceiveGitHubWebHooks();
 
             return config;
