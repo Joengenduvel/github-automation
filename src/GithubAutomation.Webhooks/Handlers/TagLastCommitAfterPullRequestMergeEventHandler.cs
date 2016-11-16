@@ -5,8 +5,17 @@ using Octokit;
 
 namespace GithubAutomation.Webhooks.Handlers
 {
+    /// <summary>
+    /// Creates a tag when a pull request is closed
+    /// </summary>
     public class TagLastCommitAfterPullRequestMergeEventHandler: GithubEventHandlerBase
     {
+        /// <summary>
+        /// Executes the event handler
+        /// </summary>
+        /// <param name="action">Action performed</param>
+        /// <param name="data">Data received from github</param>
+        /// <returns></returns>
         public override async Task ExecuteAsync(string action, dynamic data)
         {
             if (action != "pull_request")
@@ -16,7 +25,6 @@ namespace GithubAutomation.Webhooks.Handlers
 
             string pullRequestAction = data.action;
             
-
             if (pullRequestAction != "closed")
             {
                 return;
