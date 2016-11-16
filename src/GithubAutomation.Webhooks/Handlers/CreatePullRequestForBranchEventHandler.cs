@@ -6,11 +6,9 @@ namespace GithubAutomation.Webhooks.Handlers
 {
     public class CreatePullRequestForBranchEventHandler: GithubEventHandlerBase
     {
-        private Regex _refPattern;
-
         public CreatePullRequestForBranchEventHandler()
         {
-            _refPattern = new Regex("^refs/heads/(.*)$");
+            
         }
 
         public override async Task ExecuteAsync(string action, dynamic data)
