@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handlers\CloseRelatedIssuesAfterPullrequestCloseEventHandler.cs" />
+    <Compile Include="Handlers\CreateBranchForNewIssuesEventHandler.cs" />
     <Compile Include="Handlers\CreateIssueForBranchEventHandler.cs" />
     <Compile Include="Handlers\CreatePullRequestForBranchEventHandler.cs" />
     <Compile Include="Handlers\GithubEventHandlerBase.cs" />
