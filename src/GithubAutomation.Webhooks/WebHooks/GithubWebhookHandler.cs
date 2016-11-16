@@ -25,7 +25,8 @@ namespace GithubAutomation.Webhooks.WebHooks
             {
                 new CreateIssueForBranchEventHandler(),
                 new TagLastCommitAfterPullRequestMergeEventHandler(),
-                new CreatePullRequestForBranchEventHandler()
+                new CreatePullRequestForBranchEventHandler(),
+                new CloseRelatedIssuesAfterPullrequestCloseEventHandler()
             };
         }
 
