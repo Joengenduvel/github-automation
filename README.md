@@ -8,7 +8,7 @@ This repository contains a short sample application that allows you to do the fo
 
 ## Quickstart
 If you want to test this quickly, fire up the web application and note the port.
-Next run [ngrok]() with the following command:
+Next run [ngrok](https://ngrok.com/download) with the following command:
 
 ```
 ngrok http YOUR_PORT
