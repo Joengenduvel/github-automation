@@ -23,6 +23,9 @@ namespace GithubAutomation.Webhooks.Handlers
                 return;
             }
 
+            // Please see the 'push' event on github for the data that you can expect here:
+            // https://developer.github.com/v3/activity/events/types/#pullrequestevent
+
             string pullRequestAction = data.action;
             
             if (pullRequestAction != "closed")
