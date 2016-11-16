@@ -9,16 +9,12 @@ namespace GithubAutomation.Webhooks.Handlers
     /// <summary>
     /// Creates a new issue for a specific branch when it is published to github
     /// </summary>
-    public class CreateIssueForBranchEventHandler: IGithubEventHandler
+    public class CreateIssueForBranchEventHandler: GithubEventHandlerBase
     {
-        private GitHubClient _client;
         private Regex _refPattern;
 
         public CreateIssueForBranchEventHandler()
         {
-            _client = new GitHubClient(new ProductHeaderValue("github-automation-sample","0.1.0"));
-            _client.Credentials = new Credentials(WebConfigurationManager.AppSettings["PersonalAccessToken"]);
-
             _refPattern = new Regex("^refs/heads/(.*)$");
         }
 
@@ -26,7 +22,7 @@ namespace GithubAutomation.Webhooks.Handlers
         /// Creates a new issue for a newly created branch
         /// </summary>
         /// <returns></returns>
-        public async Task ExecuteAsync(string action, dynamic data)
+        public override async Task ExecuteAsync(string action, dynamic data)
         {
             if (action != "push")
             {
@@ -47,7 +43,8 @@ namespace GithubAutomation.Webhooks.Handlers
             if (_refPattern.IsMatch(@ref) && created)
             {
                 string branchName = _refPattern.Match(@ref).Groups[1].Value;
-                await _client.Issue.Create(repositoryId, new NewIssue($"New branch [{branchName}]")
+
+                await Github.Issue.Create(repositoryId, new NewIssue($"New branch [{branchName}]")
                 {
                     Assignee = author,
                     Body = $"A new branch was created by {author}\r\nCheck out the last commit at {commitUrl}"

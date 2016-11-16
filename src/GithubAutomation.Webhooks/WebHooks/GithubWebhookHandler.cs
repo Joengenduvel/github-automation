@@ -23,7 +23,8 @@ namespace GithubAutomation.Webhooks.WebHooks
             this.Receiver = GitHubWebHookReceiver.ReceiverName;
             _eventHandlers = new List<IGithubEventHandler>()
             {
-                new CreateIssueForBranchHandler()
+                new CreateIssueForBranchEventHandler(),
+                new TagLastCommitAfterPullRequestMergeEventHandler()
             };
         }
 
