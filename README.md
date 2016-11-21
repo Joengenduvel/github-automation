@@ -44,3 +44,14 @@ Enter this secret in your web.config like so:
 
 Make sure you use the exact URL as specified here and the secret from your
 configuration file otherwise the webhook will not work.
+
+To be able to communicate back to github you must authenticate the application via an access token.
+These tokens can be managed here: https://github.com/settings/tokens
+Once you have your token, add it ti the web.config
+
+```
+<appSettings>
+    <add key="MS_WebHookReceiverSecret_GitHub" value="YOUR_ID=YOUR_SECRET"/>
+    <add key="PersonalAccessToken" value="YOUR_ACCESS_TOKEN"/>
+</appSettings>
+```
